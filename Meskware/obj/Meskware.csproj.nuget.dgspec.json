@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\meskaoui.22050\\Documents\\GitHub\\SnakeCRUD\\Meskware\\Meskware\\Meskware.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\meskaoui.22050\\Documents\\GitHub\\SnakeCRUD\\Meskware\\Meskware\\Meskware.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\meskaoui.22050\\Documents\\GitHub\\SnakeCRUD\\Meskware\\Meskware\\Meskware.csproj",
+        "projectName": "Meskware",
+        "projectPath": "C:\\Users\\meskaoui.22050\\Documents\\GitHub\\SnakeCRUD\\Meskware\\Meskware\\Meskware.csproj",
+        "packagesPath": "C:\\Users\\meskaoui.22050\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\meskaoui.22050\\Documents\\GitHub\\SnakeCRUD\\Meskware\\Meskware\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\meskaoui.22050\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
