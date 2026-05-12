@@ -14,6 +14,7 @@ namespace Meskware
         [STAThread]
         static void Main()
         {
+            // Avvia la UI con lo stile standard di Windows.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

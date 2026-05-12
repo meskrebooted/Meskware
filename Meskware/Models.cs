@@ -22,6 +22,7 @@ namespace Meskware
 
         public virtual decimal CalcolaPrezzo()
         {
+            // Prezzo base: le classi derivate possono ridefinire la logica.
             return PrezzoBase;
         }
 
@@ -43,6 +44,7 @@ namespace Meskware
         public GiocoScontato(string titolo, decimal prezzoBase, int scontoPercentuale)
             : base(titolo, prezzoBase)
         {
+            // Limita sempre lo sconto tra 0% e 100%.
             ScontoPercentuale = Math.Max(0, Math.Min(100, scontoPercentuale));
         }
 
@@ -64,6 +66,7 @@ namespace Meskware
 
         public IReadOnlyList<Gioco> Giochi
         {
+            // Espone la lista in sola lettura per evitare modifiche esterne.
             get { return _giochi.AsReadOnly(); }
         }
 

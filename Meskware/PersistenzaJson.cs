@@ -10,6 +10,7 @@ namespace Meskware
         public void Salva(string percorsoFile, Libreria libreria)
         {
             var dto = new List<GiocoDto>();
+            // Converte i modelli in DTO semplici prima del salvataggio JSON.
             foreach (var g in libreria.Giochi)
             {
                 var tipo = g is GiocoScontato ? "scontato" : "base";
@@ -40,6 +41,7 @@ namespace Meskware
             var dto = JsonSerializer.Deserialize<List<GiocoDto>>(json);
             var giochi = new List<Gioco>();
 
+            // Ricostruisce i tipi corretti (base/scontato) partendo dal campo Tipo.
             foreach (var item in dto ?? new List<GiocoDto>())
             {
                 if (string.Equals(item.Tipo, "scontato", StringComparison.OrdinalIgnoreCase))

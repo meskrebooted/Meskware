@@ -43,6 +43,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSconto)).BeginInit();
             this.SuspendLayout();
+            // Area in alto: inserimento rapido di titolo, prezzo e sconto.
             // 
             // txtTitolo
             // 
@@ -69,7 +70,7 @@
             this.chkScontato.AutoSize = true;
             this.chkScontato.Location = new System.Drawing.Point(304, 33);
             this.chkScontato.Name = "chkScontato";
-            this.chkScontato.Size = new System.Drawing.Size(68, 17);
+            this.chkScontato.Size = new System.Drawing.Size(69, 17);
             this.chkScontato.TabIndex = 2;
             this.chkScontato.Text = "Scontato";
             this.chkScontato.UseVisualStyleBackColor = true;
@@ -124,7 +125,7 @@
             this.lblTotale.AutoSize = true;
             this.lblTotale.Location = new System.Drawing.Point(260, 308);
             this.lblTotale.Name = "lblTotale";
-            this.lblTotale.Size = new System.Drawing.Size(70, 13);
+            this.lblTotale.Size = new System.Drawing.Size(73, 13);
             this.lblTotale.TabIndex = 8;
             this.lblTotale.Text = "Totale: 0 euro";
             // 
@@ -157,6 +158,7 @@
             // 
             // Form1
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 342);
             this.Controls.Add(this.lblSconto);
@@ -173,10 +175,12 @@
             this.Controls.Add(this.txtTitolo);
             this.Name = "Form1";
             this.Text = "Meskware - Versione semplice";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSconto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

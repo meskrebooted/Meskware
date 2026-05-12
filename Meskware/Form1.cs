@@ -15,6 +15,7 @@ namespace Meskware
             InitializeComponent();
             _libreria = new Libreria();
             _persistenza = new PersistenzaJson();
+            // Salva e carica sempre nello stesso file locale dell'app.
             _percorso = Path.Combine(Application.StartupPath, "dati.json");
             AggiornaLista();
         }
@@ -30,6 +31,7 @@ namespace Meskware
 
             if (chkScontato.Checked)
             {
+                // Se spuntato, crea direttamente la versione scontata.
                 _libreria.Aggiungi(new GiocoScontato(titolo, numPrezzo.Value, (int)numSconto.Value));
             }
             else
@@ -59,6 +61,7 @@ namespace Meskware
 
         private void AggiornaLista()
         {
+            // Ridisegna la lista da zero per tenerla allineata ai dati reali.
             lstGiochi.Items.Clear();
             foreach (var gioco in _libreria.Giochi)
             {
@@ -66,6 +69,11 @@ namespace Meskware
             }
 
             lblTotale.Text = string.Format("Totale: {0:0.00} euro", _libreria.TotaleValore());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
