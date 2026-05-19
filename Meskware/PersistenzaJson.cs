@@ -19,6 +19,7 @@ namespace Meskware
                 dto.Add(new GiocoDto
                 {
                     Titolo = g.Titolo,
+                    Categoria = g.Categoria,
                     PrezzoBase = g.PrezzoBase,
                     Tipo = tipo,
                     ScontoPercentuale = sconto
@@ -44,13 +45,14 @@ namespace Meskware
             // Ricostruisce i tipi corretti (base/scontato) partendo dal campo Tipo.
             foreach (var item in dto ?? new List<GiocoDto>())
             {
+                var categoria = string.IsNullOrWhiteSpace(item.Categoria) ? "Base" : item.Categoria;
                 if (string.Equals(item.Tipo, "scontato", StringComparison.OrdinalIgnoreCase))
                 {
-                    giochi.Add(new GiocoScontato(item.Titolo, item.PrezzoBase, item.ScontoPercentuale));
+                    giochi.Add(new GiocoScontato(item.Titolo, categoria, item.PrezzoBase, item.ScontoPercentuale));
                 }
                 else
                 {
-                    giochi.Add(new Gioco(item.Titolo, item.PrezzoBase));
+                    giochi.Add(new Gioco(item.Titolo, categoria, item.PrezzoBase));
                 }
             }
 
@@ -61,6 +63,7 @@ namespace Meskware
     public sealed class GiocoDto
     {
         public string Titolo { get; set; }
+        public string Categoria { get; set; }
         public decimal PrezzoBase { get; set; }
         public string Tipo { get; set; }
         public int ScontoPercentuale { get; set; }

@@ -7,16 +7,19 @@ namespace Meskware
     public class Gioco
     {
         public string Titolo { get; set; }
+        public string Categoria { get; set; }
         public decimal PrezzoBase { get; set; }
 
         public Gioco()
         {
             Titolo = string.Empty;
+            Categoria = "Base";
         }
 
-        public Gioco(string titolo, decimal prezzoBase)
+        public Gioco(string titolo, string categoria, decimal prezzoBase)
         {
             Titolo = titolo;
+            Categoria = string.IsNullOrWhiteSpace(categoria) ? "Base" : categoria;
             PrezzoBase = prezzoBase;
         }
 
@@ -28,7 +31,7 @@ namespace Meskware
 
         public override string ToString()
         {
-            return string.Format("{0} - {1:0.00} euro", Titolo, CalcolaPrezzo());
+            return string.Format("{0} ({1}) - {2:0.00} euro", Titolo, Categoria, CalcolaPrezzo());
         }
     }
 
@@ -41,8 +44,8 @@ namespace Meskware
         {
         }
 
-        public GiocoScontato(string titolo, decimal prezzoBase, int scontoPercentuale)
-            : base(titolo, prezzoBase)
+        public GiocoScontato(string titolo, string categoria, decimal prezzoBase, int scontoPercentuale)
+            : base(titolo, categoria, prezzoBase)
         {
             // Limita sempre lo sconto tra 0% e 100%.
             ScontoPercentuale = Math.Max(0, Math.Min(100, scontoPercentuale));
@@ -56,7 +59,7 @@ namespace Meskware
 
         public override string ToString()
         {
-            return string.Format("{0} [sconto {1}%] - {2:0.00} euro", Titolo, ScontoPercentuale, CalcolaPrezzo());
+            return string.Format("{0} ({1}) [sconto {2}%] - {3:0.00} euro", Titolo, Categoria, ScontoPercentuale, CalcolaPrezzo());
         }
     }
 
@@ -82,7 +85,37 @@ namespace Meskware
 
         public void Aggiungi(string titolo, decimal prezzoBase)
         {
-            Aggiungi(new Gioco(titolo, prezzoBase));
+            Aggiungi(new Gioco(titolo, "Base", prezzoBase));
+        }
+
+        public void Aggiungi(string titolo, string categoria, decimal prezzoBase)
+        {
+            Aggiungi(new Gioco(titolo, categoria, prezzoBase));
+        }
+
+        public void SostituisciAt(int indice, Gioco gioco)
+        {
+            if (gioco == null)
+            {
+                throw new ArgumentNullException(nameof(gioco));
+            }
+
+            if (indice < 0 || indice >= _giochi.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+
+            _giochi[indice] = gioco;
+        }
+
+        public void RimuoviAt(int indice)
+        {
+            if (indice < 0 || indice >= _giochi.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+
+            _giochi.RemoveAt(indice);
         }
 
         public decimal TotaleValore()

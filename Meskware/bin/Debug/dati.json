@@ -1,8 +1,16 @@
 [
   {
     "Titolo": "Minecraft",
+    "Categoria": "Base",
     "PrezzoBase": 10.00,
     "Tipo": "scontato",
     "ScontoPercentuale": 30
+  },
+  {
+    "Titolo": "Cyberpunk",
+    "Categoria": "Early Access",
+    "PrezzoBase": 70.00,
+    "Tipo": "base",
+    "ScontoPercentuale": 0
   }
 ]
