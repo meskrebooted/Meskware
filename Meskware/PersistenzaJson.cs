@@ -7,10 +7,9 @@ namespace Meskware
 {
     public sealed class PersistenzaJson
     {
-        public void Salva(string percorsoFile, Libreria libreria)
+        public void SalvaUtente(string percorsoFile, string username, string passwordHash, Libreria libreria)
         {
             var dto = new List<GiocoDto>();
-            // Converte i modelli in DTO semplici prima del salvataggio JSON.
             foreach (var g in libreria.Giochi)
             {
                 var tipo = g is GiocoScontato ? "scontato" : "base";
@@ -22,42 +21,64 @@ namespace Meskware
                     Categoria = g.Categoria,
                     PrezzoBase = g.PrezzoBase,
                     Tipo = tipo,
-                    ScontoPercentuale = sconto
+                    ScontoPercentuale = sconto,
+                    PercorsoImmagine = g.PercorsoImmagine,
+                    InLibreria = g.InLibreria
                 });
             }
 
-            var json = JsonSerializer.Serialize(dto, new JsonSerializerOptions { WriteIndented = true });
+            var dati = new UtenteDto
+            {
+                Username = username,
+                PasswordHash = passwordHash,
+                Giochi = dto
+            };
+
+            var json = JsonSerializer.Serialize(dati, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(percorsoFile, json);
         }
 
-        public void Carica(string percorsoFile, Libreria libreria)
+        public UtenteDto CaricaUtente(string percorsoFile)
         {
             if (!File.Exists(percorsoFile))
             {
-                libreria.Sostituisci(new List<Gioco>());
-                return;
+                return null;
             }
 
             var json = File.ReadAllText(percorsoFile);
-            var dto = JsonSerializer.Deserialize<List<GiocoDto>>(json);
+            return JsonSerializer.Deserialize<UtenteDto>(json);
+        }
+
+        public void ApplicaGiochi(UtenteDto dati, Libreria libreria)
+        {
+            var dto = dati?.Giochi ?? new List<GiocoDto>();
             var giochi = new List<Gioco>();
 
             // Ricostruisce i tipi corretti (base/scontato) partendo dal campo Tipo.
-            foreach (var item in dto ?? new List<GiocoDto>())
+            foreach (var item in dto)
             {
                 var categoria = string.IsNullOrWhiteSpace(item.Categoria) ? "Base" : item.Categoria;
+                var percorsoImmagine = item.PercorsoImmagine ?? string.Empty;
+                var inLibreria = item.InLibreria;
                 if (string.Equals(item.Tipo, "scontato", StringComparison.OrdinalIgnoreCase))
                 {
-                    giochi.Add(new GiocoScontato(item.Titolo, categoria, item.PrezzoBase, item.ScontoPercentuale));
+                    giochi.Add(new GiocoScontato(item.Titolo, categoria, item.PrezzoBase, item.ScontoPercentuale, percorsoImmagine, inLibreria));
                 }
                 else
                 {
-                    giochi.Add(new Gioco(item.Titolo, categoria, item.PrezzoBase));
+                    giochi.Add(new Gioco(item.Titolo, categoria, item.PrezzoBase, percorsoImmagine, inLibreria));
                 }
             }
 
             libreria.Sostituisci(giochi);
         }
+    }
+
+    public sealed class UtenteDto
+    {
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public List<GiocoDto> Giochi { get; set; }
     }
 
     public sealed class GiocoDto
@@ -67,5 +88,7 @@ namespace Meskware
         public decimal PrezzoBase { get; set; }
         public string Tipo { get; set; }
         public int ScontoPercentuale { get; set; }
+        public string PercorsoImmagine { get; set; }
+        public bool InLibreria { get; set; }
     }
 }

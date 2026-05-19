@@ -9,18 +9,34 @@ namespace Meskware
         public string Titolo { get; set; }
         public string Categoria { get; set; }
         public decimal PrezzoBase { get; set; }
+        public string PercorsoImmagine { get; set; }
+        public bool InLibreria { get; set; }
 
         public Gioco()
         {
             Titolo = string.Empty;
             Categoria = "Base";
+            PercorsoImmagine = string.Empty;
+            InLibreria = false;
         }
 
         public Gioco(string titolo, string categoria, decimal prezzoBase)
+            : this(titolo, categoria, prezzoBase, string.Empty, false)
+        {
+        }
+
+        public Gioco(string titolo, string categoria, decimal prezzoBase, string percorsoImmagine)
+            : this(titolo, categoria, prezzoBase, percorsoImmagine, false)
+        {
+        }
+
+        public Gioco(string titolo, string categoria, decimal prezzoBase, string percorsoImmagine, bool inLibreria)
         {
             Titolo = titolo;
             Categoria = string.IsNullOrWhiteSpace(categoria) ? "Base" : categoria;
             PrezzoBase = prezzoBase;
+            PercorsoImmagine = percorsoImmagine ?? string.Empty;
+            InLibreria = inLibreria;
         }
 
         public virtual decimal CalcolaPrezzo()
@@ -45,7 +61,17 @@ namespace Meskware
         }
 
         public GiocoScontato(string titolo, string categoria, decimal prezzoBase, int scontoPercentuale)
-            : base(titolo, categoria, prezzoBase)
+            : this(titolo, categoria, prezzoBase, scontoPercentuale, string.Empty, false)
+        {
+        }
+
+        public GiocoScontato(string titolo, string categoria, decimal prezzoBase, int scontoPercentuale, string percorsoImmagine)
+            : this(titolo, categoria, prezzoBase, scontoPercentuale, percorsoImmagine, false)
+        {
+        }
+
+        public GiocoScontato(string titolo, string categoria, decimal prezzoBase, int scontoPercentuale, string percorsoImmagine, bool inLibreria)
+            : base(titolo, categoria, prezzoBase, percorsoImmagine, inLibreria)
         {
             // Limita sempre lo sconto tra 0% e 100%.
             ScontoPercentuale = Math.Max(0, Math.Min(100, scontoPercentuale));

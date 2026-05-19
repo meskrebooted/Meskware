@@ -1,0 +1,15 @@
+{
+  "Username": "Adam",
+  "PasswordHash": "wuqMUeBG5j6\u002Bl3oPU0ykE74IPQmt6W\u002BpnxU9jGVonEE=",
+  "Giochi": [
+    {
+      "Titolo": "Minecraft",
+      "Categoria": "Base",
+      "PrezzoBase": 10,
+      "Tipo": "base",
+      "ScontoPercentuale": 0,
+      "PercorsoImmagine": "immagini\\Copilot_20260311_123824.png",
+      "InLibreria": false
+    }
+  ]
+}

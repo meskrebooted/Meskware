@@ -18,9 +18,5 @@ C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\obj\Debug\M
 C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\obj\Debug\Meskware.exe
 C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\obj\Debug\Meskware.pdb
 C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\obj\Debug\Meskware.Form1.resources
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Buffers.xml
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Memory.xml
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Text.Json.xml
-C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\meskaoui.22050\Documents\GitHub\SnakeCRUD\Meskware\Meskware\bin\Debug\System.ValueTuple.dll
