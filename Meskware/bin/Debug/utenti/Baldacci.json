@@ -1,0 +1,15 @@
+{
+  "Username": "Baldacci",
+  "PasswordHash": "73l8gRjwLftklgfdXT\u002BMdiMEjJwGPVMsyVxe16iYpk8=",
+  "Giochi": [
+    {
+      "Titolo": "Minecraft",
+      "Categoria": "Early Access",
+      "PrezzoBase": 10,
+      "Tipo": "scontato",
+      "ScontoPercentuale": 30,
+      "PercorsoImmagine": "immagini\\duincazzato.png",
+      "InLibreria": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "Username": "rebbi",
+  "PasswordHash": "4GTwSvhPVMUCoxhvQNn3do5jsyIb/T0DRHzd/Qx8c1k=",
+  "Giochi": [
+    {
+      "Titolo": "pacman",
+      "Categoria": "DLC",
+      "PrezzoBase": 5,
+      "Tipo": "base",
+      "ScontoPercentuale": 0,
+      "PercorsoImmagine": "immagini\\duincazzato-1.png",
+      "InLibreria": true
+    }
+  ]
+}

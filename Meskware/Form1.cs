@@ -153,19 +153,37 @@ namespace Meskware
                 return;
             }
 
+            if (numPrezzo.Value < 0)
+            {
+                MessageBox.Show("Il prezzo non può essere negativo.");
+                return;
+            }
+
             var categoria = (cmbCategoria.SelectedItem as string) ?? "Base";
             var percorsoImmagine = _percorsoImmagineSelezionata;
             var inLibreria = chkInLibreria.Checked;
+
             if (chkScontato.Checked)
             {
-                // Se spuntato, crea direttamente la versione scontata.
-                _libreria.Aggiungi(new GiocoScontato(titolo, categoria, numPrezzo.Value, (int)numSconto.Value, percorsoImmagine, inLibreria));
+                _libreria.Aggiungi(new GiocoScontato(
+                    titolo,
+                    categoria,
+                    numPrezzo.Value,
+                    (int)numSconto.Value,
+                    percorsoImmagine,
+                    inLibreria));
             }
             else
             {
-                _libreria.Aggiungi(new Gioco(titolo, categoria, numPrezzo.Value, percorsoImmagine, inLibreria));
+                _libreria.Aggiungi(new Gioco(
+                    titolo,
+                    categoria,
+                    numPrezzo.Value,
+                    percorsoImmagine,
+                    inLibreria));
             }
 
+            // Reset campi
             txtTitolo.Clear();
             numPrezzo.Value = 0;
             numSconto.Value = 0;
@@ -176,6 +194,7 @@ namespace Meskware
             AggiornaAnteprima(string.Empty);
             AggiornaLista();
         }
+
 
         private void btnModifica_Click(object sender, EventArgs e)
         {
@@ -517,6 +536,24 @@ namespace Meskware
         }
 
         private void picAnteprima_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtTitolo.Clear();
+            numPrezzo.Value = 0;
+            numSconto.Value = 0;
+            chkScontato.Checked = false;
+            chkInLibreria.Checked = false;
+            cmbCategoria.SelectedIndex = 0;
+            _percorsoImmagineSelezionata = string.Empty;
+            AggiornaAnteprima(string.Empty);
+
+        }
+
+        private void numPrezzo_ValueChanged(object sender, EventArgs e)
         {
 
         }

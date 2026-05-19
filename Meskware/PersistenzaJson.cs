@@ -74,7 +74,7 @@ namespace Meskware
         }
     }
 
-    public sealed class UtenteDto
+    public sealed class UtenteDto //SHA-256
     {
         public string Username { get; set; }
         public string PasswordHash { get; set; }

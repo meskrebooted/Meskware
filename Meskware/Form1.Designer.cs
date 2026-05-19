@@ -66,6 +66,7 @@
             this.lblAuthTitolo = new System.Windows.Forms.Label();
             this.pnlApp = new System.Windows.Forms.Panel();
             this.lblUtenteCorrente = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSconto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAnteprima)).BeginInit();
@@ -95,9 +96,15 @@
             0,
             0,
             0});
+            this.numPrezzo.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
             this.numPrezzo.Name = "numPrezzo";
             this.numPrezzo.Size = new System.Drawing.Size(80, 24);
             this.numPrezzo.TabIndex = 1;
+            this.numPrezzo.ValueChanged += new System.EventHandler(this.numPrezzo_ValueChanged);
             // 
             // chkScontato
             // 
@@ -212,7 +219,7 @@
             this.btnImmagine.FlatAppearance.BorderSize = 0;
             this.btnImmagine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImmagine.ForeColor = System.Drawing.Color.White;
-            this.btnImmagine.Location = new System.Drawing.Point(400, 95);
+            this.btnImmagine.Location = new System.Drawing.Point(400, 89);
             this.btnImmagine.Name = "btnImmagine";
             this.btnImmagine.Size = new System.Drawing.Size(140, 26);
             this.btnImmagine.TabIndex = 8;
@@ -528,6 +535,7 @@
             // pnlApp
             // 
             this.pnlApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.pnlApp.Controls.Add(this.button1);
             this.pnlApp.Controls.Add(this.lblUtenteCorrente);
             this.pnlApp.Controls.Add(this.picAnteprima);
             this.pnlApp.Controls.Add(this.lblAnteprima);
@@ -572,6 +580,21 @@
             this.lblUtenteCorrente.Size = new System.Drawing.Size(49, 17);
             this.lblUtenteCorrente.TabIndex = 22;
             this.lblUtenteCorrente.Text = "Utente:";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(65)))), ((int)(((byte)(60)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(120, 133);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(127, 26);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Cancella Campi";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -640,6 +663,7 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Panel pnlApp;
         private System.Windows.Forms.Label lblUtenteCorrente;
+        private System.Windows.Forms.Button button1;
     }
 }
 
